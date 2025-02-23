@@ -24,7 +24,7 @@ from sentinelhub import (
     SHConfig
 )
 
-from utils import split_bbox, merge_rasters, get_raster_image, compute_indices, vector_dataset
+from utils_old import split_bbox, merge_rasters, get_raster_image, compute_indices, vector_dataset
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -160,15 +160,15 @@ def train_lulc_model(dates, satellite_data, cloud_coverage, shapefile, training_
 
 if __name__ == "__main__" :
     config = SHConfig()
-    config.sh_client_id = "554be802-fc4b-47d7-a2c2-15aa73e46cae"
-    config.sh_client_secret = "YdhKashxgseNhF0G2usMXGNeSKRMSTSZ"
+    config.sh_client_id = os.getenv("SH_CLIENT_ID", "your-client-id-here")
+    config.sh_client_secret = os.getenv("SH_CLIENT_SECRET", "your-client-secret-here")
 
     time_interval = (f"2024-01-01", f"2025-01-01")
     cloud_coverage = 10
     resolution = 10
     collection = DataCollection.SENTINEL2_L2A
 
-    base_path = r"C:\assignment"
+    base_path = r"C:\lulc_classification"
     data_file = rf"{base_path}\gpkg\LULC_ground_data.gpkg"
     roi_file = rf"{base_path}\gpkg\viti_island.gpkg"
 
