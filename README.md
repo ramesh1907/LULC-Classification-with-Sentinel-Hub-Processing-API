@@ -42,22 +42,18 @@ Mapping the extent of land use and land cover (LULC) categories over time is ess
    ```
 
 ## Usage
-1. Update the Sentinel Hub API credentials in the configuration file.
-2. Run the script to download Sentinel-2 imagery:
+1. Update the Sentinel Hub API credentials in the lulc_training and lulc_classification files.
+2. Run the script to create and train lulc model:
    ```bash
-   python download_data.py
+   python lulc_training.py
    ```
-3. Train the model and perform classification:
+3. Classify image and Convert classified raster to vector:
    ```bash
-   python train_and_classify.py
-   ```
-4. Convert classified raster to vector:
-   ```bash
-   python raster_to_vector.py
+   python lulc_classification.py
    ```
 
 ## Results
-- The final classified map is stored as a raster file.
+- The final classified map is stored as a classified_image.tif file.
 - The vectorized land cover classes are saved as a shapefile.
 
 ## Acknowledgments
